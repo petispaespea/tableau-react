@@ -164,7 +164,6 @@ class TableauReport extends React.Component {
     }
 
     this.viz = new Tableau.Viz(this.container, vizUrl, options);
-    this.viz.addEventListener('tabswitch', () => alert('Deu Certo'));
   }
 
   render() {
