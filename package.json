@@ -1,5 +1,5 @@
 {
-  "name": "tableau-viz-react",
+  "name": "tableau-react",
   "version": "1.0.6",
   "description": "React component for rendering tableau reports using tableau javascript API.",
   "main": "dist/index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GabrielFerrarini/tableau-viz-react.git"
+    "url": "git+https://github.com/petispaespea/tableau-react.git"
   },
   "keywords": [
     "tableau",
@@ -23,9 +23,9 @@
   "author": "Cooper Maruyama",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GabrielFerrarini/tableau-viz-react/issues"
+    "url": "https://github.com/petispaespea/tableau-react/issues"
   },
-  "homepage": "https://github.com/GabrielFerrarini/tableau-viz-react#readme",
+  "homepage": "https://github.com/petispaespea/tableau-react#readme",
   "peerDependencies": {
     "react": "^15.6.2",
     "react-dom": "^15.6.2"
