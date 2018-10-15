@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import url from 'url';
-import { Promise } from 'es6-promise';
-import shallowequal from 'shallowequal';
-import tokenizeUrl from './tokenizeUrl';
-import Tableau from 'tableau-api';
+import React from "react";
+import PropTypes from "prop-types";
+import url from "url";
+import { Promise } from "es6-promise";
+import shallowequal from "shallowequal";
+import tokenizeUrl from "./tokenizeUrl";
+import Tableau from "tableau-api";
+
 
 class TableauReport extends React.Component {
   constructor(props) {
@@ -77,14 +78,14 @@ class TableauReport extends React.Component {
   getUrl() {
     const { token } = this.props;
     const parsed = url.parse(this.props.url, true);
-    const query = '?:embed=yes&:comments=no&:toolbar=yes&:refresh=yes';
+    const query = "?:embed=yes&:comments=no&:toolbar=yes&:refresh=yes";
 
     if (!this.state.didInvalidateToken && token) {
       this.invalidateToken();
       return tokenizeUrl(this.props.url, token) + query;
     }
 
-    return parsed.protocol + '//' + parsed.host + parsed.pathname + query;
+    return parsed.protocol + "//" + parsed.host + parsed.pathname + query;
   }
 
   invalidateToken() {
@@ -170,7 +171,7 @@ class TableauReport extends React.Component {
   }
 
   render() {
-    return <div ref={c => this.container = c} />;
+    return <div ref={c => (this.container = c)} />;
   }
 }
 
