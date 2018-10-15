@@ -1,24 +1,10 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import url from 'url';
 import { Promise } from 'es6-promise';
 import shallowequal from 'shallowequal';
 import tokenizeUrl from './tokenizeUrl';
 import Tableau from 'tableau-api';
-
-const propTypes = {
-  filters: PropTypes.object,
-  url: PropTypes.string,
-  parameters: PropTypes.object,
-  options: PropTypes.object,
-  token: PropTypes.string
-};
-
-const defaultProps = {
-  loading: false,
-  parameters: {},
-  filters: {},
-  options: {}
-};
 
 class TableauReport extends React.Component {
   constructor(props) {
@@ -26,7 +12,8 @@ class TableauReport extends React.Component {
 
     this.state = {
       filters: props.filters,
-      parameters: props.parameters
+      parameters: props.parameters,
+      loading: true,
     };
   }
 
@@ -165,8 +152,11 @@ class TableauReport extends React.Component {
         this.workbook = this.viz.getWorkbook();
         this.sheets = this.workbook.getActiveSheet().getWorksheets();
         this.sheet = this.sheets[0];
+        this.setState({ loading: false });
 
-        this.props.onLoad(new Date());
+        if (this.props.onLoad) {
+          this.props.onLoad(new Date());
+        }
       }
     };
 
@@ -184,7 +174,20 @@ class TableauReport extends React.Component {
   }
 }
 
-TableauReport.propTypes = propTypes;
-TableauReport.defaultProps = defaultProps;
+TableauReport.propTypes = {
+  filters: PropTypes.object,
+  url: PropTypes.string,
+  parameters: PropTypes.object,
+  options: PropTypes.object,
+  token: PropTypes.string,
+  onLoad: PropTypes.func,
+};
+
+TableauReport.defaultProps = {
+  parameters: {},
+  filters: {},
+  options: {},
+  onLoad: null,
+};
 
 export default TableauReport;
